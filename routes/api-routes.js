@@ -40,7 +40,14 @@ router.get("/api/workouts", (req, res) => {
 });
 
 router.get("/api/workouts/range", (req, res) => {
-
+    db.Workout.find({})
+    .then(dbWorkout => {
+        res.json(dbWorkout);
+    })
+    .catch(err => {
+        res.json(err);
+        console.log(err);
+    });
 });
 
 module.exports = router;
