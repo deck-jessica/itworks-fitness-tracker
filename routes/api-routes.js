@@ -47,6 +47,8 @@ router.get("/api/workouts/range", (req, res) => {
             $addFields: {
                 totalDuration: { $sum: "$exercises.duration" }
             } } ] )
+    .sort( {"_id": 1, "day": 1})
+    .limit(7)
     .then(dbWorkout => {
         res.json(dbWorkout);
     })
